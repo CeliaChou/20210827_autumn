@@ -65,10 +65,10 @@
         </div>
         <div class="myTabs">
             <ul class="tabs_list">
-                <li class="tabbtn" id="tab1_btn"><a href="#tab1">邁向王者之路</a></li>
-                <li class="tabbtn" id="tab2_btn"><a href="#tab2">特選秋季擺飾</a></li>
-                <li class="tabbtn" id="tab3_btn"><a href="#tab3">中秋月圓人團圓</a></li>
-                <li class="tabbtn" id="tab4_btn"><a href="#tab4">入秋好禮滿額贈</a></li>
+                <li class="tabbtn"><a href="#tab1">邁向王者之路</a></li>
+                <li class="tabbtn"><a href="#tab2">特選秋季擺飾</a></li>
+                <li class="tabbtn"><a href="#tab3">中秋月圓人團圓</a></li>
+                <li class="tabbtn"><a href="#tab4">入秋好禮滿額贈</a></li>
             </ul>
             <div class="tab_container">
                 <div id="tab1" class="tab_content">
@@ -868,31 +868,21 @@
     </div>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="http://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="js/main.js"></script>
-    <script type="text/javascript">
-        //add
-        var getUrlParameter = function getUrlParameter(sParam) {
-            var sPageURL = window.location.search.substring(1),
-                sURLVariables = sPageURL.split('&'),
-                sParameterName,
-                i;
-
-            for (i = 0; i < sURLVariables.length; i++) {
-                sParameterName = sURLVariables[i].split('=');
-
-                if (sParameterName[0] === sParam) {
-                    return typeof sParameterName[1] === undefined ? true : decodeURIComponent(sParameterName[1]);
-                }
-            }
-            return false;
-        };
-        //end
-
-        var tabindex = getUrlParameter('tab');
-        if((tabindex < 1)||(tabindex > 4)) {
-            tabindex = 1;
-        }
-        $('#tab'+tabindex+'_btn').click();
+    <script type="text/javascript" src="js/skrollr.min.js"></script>
+	<script type="text/javascript">
+        $(function(){
+			if ($(window).width() > 1000) {  
+					skrollr.init({
+						forceHeight: false,
+						easing: {
+						vibrate: function(p) {
+							return Math.sin(p * 10 * Math.PI);
+						}
+					}
+				});
+			}     
+		});
     </script>
+    <script src="js/main.js"></script>
 </body>
 </html>
